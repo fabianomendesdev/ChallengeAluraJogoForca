@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Jogo Forca</title>
 </head>
@@ -12,17 +13,71 @@
 
     </header>
     <main id="main">
-        <section id="game">
-            <div id="hangman">
-                <img id="hangmanImg" src="assets/img/forca.png" alt="Forca">
-                <img id="imgPuppet" src="assets/img/completo.png" alt="Boneco">
-            </div>
-        </section>
-
+        <div class="container-md">
+            <section id="game">
+                <div id="hangman">
+                    <img id="hangmanImg" src="assets/img/forca.png" alt="Forca">
+                    <img id="imgPuppet" src="assets/img/completo.png" alt="Boneco">
+                </div>
+                <div id="word">
+                    <input type="text" readonly value="P">
+                    <input type="text" readonly value="A">
+                    <input type="text" readonly value="P">
+                    <input type="text" readonly value="A">
+                    <input type="text" readonly value="G">
+                    <input type="text" readonly value="A">
+                    <input type="text" readonly value="I">
+                    <input type="text" readonly value="O">
+                </div>
+                <div id="keyboard">
+                    <div class="line">
+                        <button>Q</button>
+                        <button>W</button>
+                        <button>E</button>
+                        <button>R</button>
+                        <button>T</button>
+                        <button>Y</button>
+                        <button>U</button>
+                        <button>I</button>
+                        <button>O</button>
+                        <button>P</button>
+                    </div>
+                    <div class="line">
+                        <button>A</button>
+                        <button>S</button>
+                        <button>D</button>
+                        <button>F</button>
+                        <button>G</button>
+                        <button>H</button>
+                        <button>J</button>
+                        <button>K</button>
+                        <button>L</button>
+                        <button>Ç</button>
+                    </div>
+                    <div class="line">
+                        <button>Z</button>
+                        <button>X</button>
+                        <button>C</button>
+                        <button>V</button>
+                        <button>B</button>
+                        <button>N</button>
+                        <button>M</button>
+                    </div>
+                </div>
+                <div id="actions">
+                    <button id="newGamer">Novo jogo</button>
+                    <button id="restart">Reiniciar</button>
+                </div>
+                <div id="tip">
+                    <p>Aves</p>
+                </div>
+            </section>
+        </div>
     </main>
     <footer id="footer">
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
