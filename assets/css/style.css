@@ -19,6 +19,11 @@
     font-family: 'Ubuntu Condensed', sans-serif !important; 
 }
 
+/* Logo */
+#svgAlura {
+    margin-left: 10px;
+}
+
 /* Estrutura */
 body {
     box-sizing: border-box;
@@ -97,6 +102,24 @@ body {
     height: 50px;
     margin: 2px;
     font-size: 30px;
+}
+
+#game #keyboard .line button:hover {
+    transform: scale(1.15);
+}
+
+#game #keyboard .line .error {
+    background-color: #e41e1d;
+}
+
+#game #keyboard .line .hit {
+    background-color: #f17e23;
+}
+
+#game #keyboard .line .error:hover,
+#game #keyboard .line .hit:hover {
+    transform: unset;
+    cursor: no-drop;
 }
 
 /* Word */
