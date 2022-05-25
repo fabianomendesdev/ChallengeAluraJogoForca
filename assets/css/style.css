@@ -1,0 +1,81 @@
+/* Import Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Variáveis */
+
+:root {
+    --color1: #e41e1d;
+    --color2: #f17e23;
+    --color3: #fae9b9;
+    --color4: #658ff3;
+    --color5: #62c0f0;
+    --color6: #FFF;
+    --color7: #000;
+}
+
+/* Stilo global */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Ubuntu', 'Arial' sans-serif;
+}
+
+/* Estrutura */
+
+body {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 1fr 40px;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer"
+    ;
+    background-image: linear-gradient(45deg, var(--color4), var(--color5));
+}
+
+#header {
+    grid-area: header;
+    /* background-color: blue; */
+}
+
+#main {
+    grid-area: main;
+    min-height: calc(100vh - 120px);
+    /* background-color: var(--color1); */
+}
+
+#footer {
+    grid-area: footer;
+    /* background-color: yellow; */
+}
+
+/* Game */
+
+#game {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+
+#game #hangman {
+    position: relative;
+    /* background-color: blue; */
+}
+
+#game #hangman #hangmanImg {
+    width: 600px;
+}
+
+#game #hangman #imgPuppet {
+    position: absolute;
+    top: 57%;
+    left: 49.5%;
+    transform: translate(-50%, -50%);
+    height: 260px;
+}
