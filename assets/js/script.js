@@ -18,6 +18,7 @@ const newGame = () => {
     wordDrawn = words[Math.floor(Math.random() * words.length)]
     removeWordView()
     createWordView(wordDrawn.name)
+    document.querySelectorAll('#hint p')[0].innerText = wordDrawn.hint
     toggleHint(true)
 }
 
@@ -48,7 +49,6 @@ const removeWordView = () => {
 
 // Mostar ou esconder dica
 const toggleHint = (op = false, add = false) => {
-    document.querySelectorAll('#hint p')[0].innerText = wordDrawn.hint
     if(op){ 
         if(add){
             document.getElementById('hint').classList.add('toggle')
