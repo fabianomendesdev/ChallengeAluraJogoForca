@@ -5,6 +5,9 @@ const words = [
     {name: "Abacate", hint: "Fruta"}
 ]
 
+// Variáveis globais
+let hitCounter = 0
+
 // Variáveis HMTL
 const divWord = document.querySelector('#word')
 const divActions = document.querySelector('#actions')
@@ -98,7 +101,11 @@ const checkHitsMisses = (key) => {
     let result
 
     if(word.indexOf(key) != -1){
-        showCorrectLetter(key)
+        hitCounter += showCorrectLetter(key)
+        console.log(hitCounter)
+        if(hitCounter >= wordDrawn.name.length){
+            alert("Acertou")
+        }
         result = true
     }else{
         showErrorHangman()
@@ -110,11 +117,14 @@ const checkHitsMisses = (key) => {
 
 // Mostrar letra certa
 const showCorrectLetter = (key) => {
+    let sum = 0
     for(let i=0; i < wordDrawn.name.length; i++) {
         if(key == wordDrawn.name.toLocaleLowerCase().charAt(i)){
             document.querySelectorAll('#word input')[i].value = key.toLocaleUpperCase()
+            sum++
         }
     }
+    return sum
 }
 
 // Mostar erro na forca
@@ -136,6 +146,8 @@ const showErrorHangman = () => {
         }
     }
 }
+
+// Mostrar e esconder teclado
 
 // Events
 document.querySelector('#actions #newGame').addEventListener("click", newGame)
