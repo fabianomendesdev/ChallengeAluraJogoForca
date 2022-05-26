@@ -161,12 +161,12 @@ body {
 }
 
 /* Dica */
-#tip {
+#hint {
     margin-top: 25px;
     background-color: yellow;
 }
 
-#game #tip p {
+#game #hint p {
     font-size: 30px;
     padding: 10px 15px;
     margin: 0;

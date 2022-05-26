@@ -1,21 +1,26 @@
 // Base de palavras
 const words = [
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Macaco", tip: "Animal"},
-    {name: "Banana", tip: "Fruta"}
+    {name: "Macaco", hint: "Animal"},
+    {name: "Banana", hint: "Fruta"}
 ]
 
 // Sorteio das palavras
-const wordDrawn = Math.floor(Math.random() * words.length)
+const wordDrawn = words[Math.floor(Math.random() * words.length)]
+
+// Mostar ou esconder dica
+const toggleHint = (op = false, add = false) => {
+    document.querySelectorAll('#hint p')[0].innerText = wordDrawn.hint
+    if(op){ 
+        if(add){
+            document.getElementById('hint').classList.add('toggle')
+        }else{
+            document.getElementById('hint').classList.remove('toggle')
+        }
+    }else{
+        document.getElementById('hint').classList.toggle("toggle")
+    }
+}
+toggleHint(true)
 
 // Pegar as teclas
 document.querySelectorAll("#keyboard .line button").forEach(function(button, i) {
@@ -41,7 +46,7 @@ const verify = (button, i) => {
 
 // Verificar acertos
 const checkHitsMisses = (key) => {
-    let word = words[0].name.toLocaleLowerCase()
+    let word = wordDrawn.name.toLocaleLowerCase()
     let result
 
     if(word.indexOf(key) != -1){
