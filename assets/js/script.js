@@ -10,6 +10,7 @@ let hitCounter = 0
 
 // Variáveis HMTL
 const divWord = document.querySelector('#word')
+const divKeyboard = document.querySelector('#keyboard')
 const divActions = document.querySelector('#actions')
 const divHangman = document.querySelector('#hangman')
 const allKeyboardButtons = document.querySelectorAll("#keyboard .line button")
@@ -20,18 +21,24 @@ var wordDrawn = (function() {
 })()
 
 const newGame = () => {
+    hitCounter = 0
+    removeDoll()
     wordDrawn = words[Math.floor(Math.random() * words.length)]
     removeWordView()
     createWordView(wordDrawn.name)
     document.querySelector('#toggleHint').innerText = wordDrawn.hint
     toggleHint(true, true)
     removeKeyboardHitsAndMisses()
+    showHideKeyboard(true)
 }
 
 const restart = () => {
+    hitCounter = 0
+    removeDoll()
     removeWordView()
     createWordView(wordDrawn.name)
     removeKeyboardHitsAndMisses()
+    showHideKeyboard(true)
 }
 
 // Criar inputs de mostrar as palavras
@@ -104,6 +111,7 @@ const checkHitsMisses = (key) => {
         hitCounter += showCorrectLetter(key)
         console.log(hitCounter)
         if(hitCounter >= wordDrawn.name.length){
+            showHideKeyboard(false)
             alert("Acertou")
         }
         result = true
@@ -142,12 +150,25 @@ const showErrorHangman = () => {
             imgPuppet.src = `assets/img/puppet${imgNumber}.png`
         }else{
             imgPuppet.src = `assets/img/puppet${imgNumber}.png`
+            showHideKeyboard(false)
             alert("acabou")
         }
     }
 }
 
+// Remover boneco
+const removeDoll = () => {
+    divHangman.removeChild(document.getElementById("imgPuppet"))
+}
+
 // Mostrar e esconder teclado
+const showHideKeyboard = (op = false) => {
+    if(op){
+        divKeyboard.classList.remove('hidden')
+    }else{
+        divKeyboard.classList.add('hidden')
+    }
+}
 
 // Events
 document.querySelector('#actions #newGame').addEventListener("click", newGame)

@@ -91,6 +91,10 @@ body {
     margin-top: 25px;
 }
 
+#game #keyboard.hidden {
+    display: none;
+}
+
 #game #keyboard .line {
     display: flex;
     justify-content: center;
