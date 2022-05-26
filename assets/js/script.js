@@ -4,6 +4,32 @@ const words = [
     {name: "Banana", hint: "Fruta"}
 ]
 
+// Variáveis HMTL
+const divWord = document.querySelector('#word')
+const divActions = document.querySelector('#actions')
+
+const newGame = () => {
+    alert("Começando jogo")
+}
+
+const restart = () => {
+    document.querySelectorAll('#word input')
+
+
+    createWordView()
+}
+
+// Criar inputs de mostrar as palavras
+const createWordView = () => {
+    let motherElement = divWord
+
+    const elementChildren = document.createElement('input')
+    elementChildren.type = "text"
+    elementChildren.setAttribute('readonly', '')
+
+    motherElement.appendChild(elementChildren)
+}
+
 // Sorteio das palavras
 const wordDrawn = words[Math.floor(Math.random() * words.length)]
 
@@ -57,3 +83,7 @@ const checkHitsMisses = (key) => {
 
     return result
 }
+
+// Events
+document.querySelector('#actions #newGame').addEventListener("click", newGame)
+document.querySelector('#actions #restart').addEventListener("click", restart)
