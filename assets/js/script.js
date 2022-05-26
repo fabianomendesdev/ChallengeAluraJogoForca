@@ -44,7 +44,6 @@ const restart = () => {
 // Criar inputs de mostrar as palavras
 const createWordView = (name) => {
     let motherElement = divWord
-
     for(let i=0; i < name.length; i++){
         const elementChildren = document.createElement('input')
         elementChildren.type = "text"
@@ -158,7 +157,9 @@ const showErrorHangman = () => {
 
 // Remover boneco
 const removeDoll = () => {
-    divHangman.removeChild(document.getElementById("imgPuppet"))
+    if(document.getElementById("imgPuppet")){
+        divHangman.removeChild(document.getElementById("imgPuppet"))
+    }
 }
 
 // Mostrar e esconder teclado
