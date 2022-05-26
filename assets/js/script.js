@@ -1,37 +1,50 @@
 // Base de palavras
 const words = [
     {name: "Macaco", hint: "Animal"},
-    {name: "Banana", hint: "Fruta"}
+    {name: "Banana", hint: "Fruta"},
+    {name: "Abacate", hint: "Fruta"}
 ]
 
 // Variáveis HMTL
 const divWord = document.querySelector('#word')
 const divActions = document.querySelector('#actions')
 
+// Sorteio das palavras
+var wordDrawn = (function() {
+    return words[Math.floor(Math.random() * words.length)]
+})()
+
 const newGame = () => {
-    alert("Começando jogo")
+    wordDrawn = words[Math.floor(Math.random() * words.length)]
+    removeWordView()
+    createWordView(wordDrawn.name)
+    toggleHint(true)
 }
 
 const restart = () => {
-    document.querySelectorAll('#word input')
-
-
-    createWordView()
+    removeWordView()
+    createWordView(wordDrawn.name)
+    toggleHint(true)
 }
 
 // Criar inputs de mostrar as palavras
-const createWordView = () => {
+const createWordView = (name) => {
     let motherElement = divWord
 
-    const elementChildren = document.createElement('input')
-    elementChildren.type = "text"
-    elementChildren.setAttribute('readonly', '')
-
-    motherElement.appendChild(elementChildren)
+    for(let i=0; i < name.length; i++){
+        const elementChildren = document.createElement('input')
+        elementChildren.type = "text"
+        elementChildren.setAttribute('readonly', '')
+        motherElement.appendChild(elementChildren)
+    }
 }
 
-// Sorteio das palavras
-const wordDrawn = words[Math.floor(Math.random() * words.length)]
+// Remover inputs de mostrar palavras
+const removeWordView = () => {
+    document.querySelectorAll('#word input').forEach((input) => {
+        divWord.removeChild(input)
+    })
+}
 
 // Mostar ou esconder dica
 const toggleHint = (op = false, add = false) => {
@@ -46,10 +59,9 @@ const toggleHint = (op = false, add = false) => {
         document.getElementById('hint').classList.toggle("toggle")
     }
 }
-toggleHint(true)
 
 // Pegar as teclas
-document.querySelectorAll("#keyboard .line button").forEach(function(button, i) {
+document.querySelectorAll("#keyboard .line button").forEach((button, i) => {
     button.addEventListener("click", () => {
         verify(button, i)
     })
@@ -87,3 +99,4 @@ const checkHitsMisses = (key) => {
 // Events
 document.querySelector('#actions #newGame').addEventListener("click", newGame)
 document.querySelector('#actions #restart').addEventListener("click", restart)
+document.addEventListener("DOMContentLoaded", newGame)
