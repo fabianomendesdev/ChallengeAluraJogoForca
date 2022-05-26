@@ -162,12 +162,18 @@ body {
 
 /* Dica */
 #hint {
+    min-height: 25px;
+    min-width: 50px;
     margin-top: 25px;
     background-color: yellow;
 }
 
-#game #hint p {
+#hint #toggleHint {
     font-size: 30px;
     padding: 10px 15px;
     margin: 0;
+}
+
+#hint.toggle #toggleHint {
+    display: none;
 }

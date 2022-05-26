@@ -8,6 +8,8 @@ const words = [
 // Variáveis HMTL
 const divWord = document.querySelector('#word')
 const divActions = document.querySelector('#actions')
+const divHangman = document.querySelector('#hangman')
+const allKeyboardButtons = document.querySelectorAll("#keyboard .line button")
 
 // Sorteio das palavras
 var wordDrawn = (function() {
@@ -18,14 +20,15 @@ const newGame = () => {
     wordDrawn = words[Math.floor(Math.random() * words.length)]
     removeWordView()
     createWordView(wordDrawn.name)
-    document.querySelectorAll('#hint p')[0].innerText = wordDrawn.hint
-    toggleHint(true)
+    document.querySelector('#toggleHint').innerText = wordDrawn.hint
+    toggleHint(true, true)
+    removeKeyboardHitsAndMisses()
 }
 
 const restart = () => {
     removeWordView()
     createWordView(wordDrawn.name)
-    toggleHint(true)
+    removeKeyboardHitsAndMisses()
 }
 
 // Criar inputs de mostrar as palavras
@@ -60,8 +63,15 @@ const toggleHint = (op = false, add = false) => {
     }
 }
 
+// Remover erros e acertos das teclas
+const removeKeyboardHitsAndMisses = () => {
+    allKeyboardButtons.forEach((button) => {
+        button.classList.remove('error', 'hit')
+    });
+}
+
 // Pegar as teclas
-document.querySelectorAll("#keyboard .line button").forEach((button, i) => {
+allKeyboardButtons.forEach((button, i) => {
     button.addEventListener("click", () => {
         verify(button, i)
     })
@@ -88,15 +98,47 @@ const checkHitsMisses = (key) => {
     let result
 
     if(word.indexOf(key) != -1){
+        showCorrectLetter(key)
         result = true
     }else{
-       result = false
+        showErrorHangman()
+        result = false
     }
 
     return result
 }
 
+// Mostrar letra certa
+const showCorrectLetter = (key) => {
+    for(let i=0; i < wordDrawn.name.length; i++) {
+        if(key == wordDrawn.name.toLocaleLowerCase().charAt(i)){
+            document.querySelectorAll('#word input')[i].value = key.toLocaleUpperCase()
+        }
+    }
+}
+
+// Mostar erro na forca
+const showErrorHangman = () => {
+    if(!document.querySelector("#imgPuppet")){
+        let element = document.createElement('img')
+        element.id = "imgPuppet"
+        element.alt = "Boneco"
+        element.src = "assets/img/puppet1.png"
+        divHangman.appendChild(element)
+    }else{
+        let imgNumber = imgPuppet.src.substring(imgPuppet.src.length-5, imgPuppet.src.length-4)
+        imgNumber++
+        if(imgNumber < 6){
+            imgPuppet.src = `assets/img/puppet${imgNumber}.png`
+        }else{
+            imgPuppet.src = `assets/img/puppet${imgNumber}.png`
+            alert("acabou")
+        }
+    }
+}
+
 // Events
 document.querySelector('#actions #newGame').addEventListener("click", newGame)
 document.querySelector('#actions #restart').addEventListener("click", restart)
+document.querySelector('#hint').addEventListener("click", _ => toggleHint())
 document.addEventListener("DOMContentLoaded", newGame)
