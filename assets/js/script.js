@@ -171,7 +171,7 @@ const showHideKeyboard = (op = false) => {
     }
 }
 
-// Events
+// Eventos
 document.querySelector('#actions #newGame').addEventListener("click", newGame)
 document.querySelector('#actions #restart').addEventListener("click", restart)
 document.querySelector('#hint').addEventListener("click", _ => toggleHint())
