@@ -84,6 +84,11 @@ const toggleHint = (op = false, add = false) => {
     }
 }
 
+// Adicionar/remover cor de acerto da palavra
+const toggleWordColor = () => {
+    
+}
+
 // Remover erros e acertos das teclas
 const removeKeyboardHitsAndMisses = () => {
     allKeyboardButtons.forEach((button) => {
