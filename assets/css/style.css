@@ -21,7 +21,10 @@
 
 /* Logo */
 #svgAlura {
-    margin-left: 10px;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    animation: float infinite 5s ease-in-out;
 }
 
 /* Estrutura */
@@ -57,29 +60,37 @@ body {
     /* background-color: yellow; */
 }
 
+/* Container */
+.container-md {
+    position: relative;
+    height: 100%;
+}
+
 /* Game */
 #game {
-    /* background-color: red; */
+    background-color: red;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 /* Forca */
 #game #hangman {
     position: relative;
-    /* background-color: blue; */
+    background-color: blue;
 }
 
 #game #hangman #hangmanImg {
-    width: 600px;
+    width: 400px;
 }
 
 #game #hangman #imgPuppet {
     position: absolute;
     top: 57%;
-    left: 49.5%;
+    left: 49%;
     transform: translate(-50%, -50%);
     height: 260px;
 }
@@ -89,6 +100,7 @@ body {
     background-color: yellow;
     width: 500px;
     margin-top: 25px;
+    animation: showKeyboard 1s ease-in-out;
 }
 
 #game #keyboard.hidden {
@@ -128,8 +140,9 @@ body {
 
 /* Word */
 #word {
+    margin-top: 20px;
     background-color: yellow;
-    /* height: 50px; */
+    min-height: 50px;
     display: flex;
     justify-content: center;
     width: 500px;
@@ -145,6 +158,11 @@ body {
     background-color: transparent;
     text-align: center;
     outline: none;
+    font-weight: bold;
+}
+
+#word.hit input {
+    color: green;
 }
 
 /* Ações */
@@ -166,10 +184,14 @@ body {
 
 /* Dica */
 #hint {
-    min-height: 25px;
-    min-width: 50px;
+    height: 60px;
+    min-width: 20px;
     margin-top: 25px;
     background-color: yellow;
+}
+
+#hint:hover {
+    cursor: pointer;
 }
 
 #hint #toggleHint {
@@ -180,4 +202,25 @@ body {
 
 #hint.toggle #toggleHint {
     display: none;
+}
+
+/* Animações */
+@keyframes float {
+    0%,100%{
+		transform:translatey(0);
+	}
+
+	50%{
+		transform:translatey(-20px);
+	}
+}
+
+@keyframes showKeyboard {
+    0%{
+		opacity: 0;
+	}
+
+	80%{
+		opacity: 100%;
+	}
 }
