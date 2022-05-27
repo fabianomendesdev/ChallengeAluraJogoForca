@@ -41,6 +41,18 @@ const restart = () => {
     showHideKeyboard(true)
 }
 
+// Ganhou
+const win = () => {
+    showHideKeyboard(false)
+    console.log("Ganhou")
+}
+
+// Perdeu
+const lost = () => {
+    showHideKeyboard(false)
+    console.log("Perdeu")
+}
+
 // Criar inputs de mostrar as palavras
 const createWordView = (name) => {
     let motherElement = divWord
@@ -108,17 +120,14 @@ const checkHitsMisses = (key) => {
 
     if(word.indexOf(key) != -1){
         hitCounter += showCorrectLetter(key)
-        console.log(hitCounter)
         if(hitCounter >= wordDrawn.name.length){
-            showHideKeyboard(false)
-            alert("Acertou")
+            win()
         }
         result = true
     }else{
         showErrorHangman()
         result = false
     }
-
     return result
 }
 
@@ -149,8 +158,7 @@ const showErrorHangman = () => {
             imgPuppet.src = `assets/img/puppet${imgNumber}.png`
         }else{
             imgPuppet.src = `assets/img/puppet${imgNumber}.png`
-            showHideKeyboard(false)
-            alert("acabou")
+            lost()
         }
     }
 }
