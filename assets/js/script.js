@@ -30,6 +30,7 @@ const newGame = () => {
     toggleHint(true, true)
     removeKeyboardHitsAndMisses()
     showHideKeyboard(true)
+    toggleWordColor(false)
 }
 
 const restart = () => {
@@ -39,11 +40,13 @@ const restart = () => {
     createWordView(wordDrawn.name)
     removeKeyboardHitsAndMisses()
     showHideKeyboard(true)
+    toggleWordColor(false)
 }
 
 // Ganhou
 const win = () => {
     showHideKeyboard(false)
+    toggleWordColor(true)
     console.log("Ganhou")
 }
 
@@ -85,8 +88,12 @@ const toggleHint = (op = false, add = false) => {
 }
 
 // Adicionar/remover cor de acerto da palavra
-const toggleWordColor = () => {
-    
+const toggleWordColor = (op) => {
+    if(op){
+        divWord.classList.add("hit")
+    }else{
+        divWord.classList.remove("hit")
+    }
 }
 
 // Remover erros e acertos das teclas
@@ -99,7 +106,9 @@ const removeKeyboardHitsAndMisses = () => {
 // Pegar as teclas
 allKeyboardButtons.forEach((button, i) => {
     button.addEventListener("click", () => {
-        verify(button, i)
+        if(!(button.classList.contains('hit') || button.classList.contains('error'))){
+            verify(button, i)
+        }
     })
 });
 
@@ -187,5 +196,5 @@ const showHideKeyboard = (op = false) => {
 // Eventos
 document.querySelector('#actions #newGame').addEventListener("click", newGame)
 document.querySelector('#actions #restart').addEventListener("click", restart)
-document.querySelector('#hint').addEventListener("click", _ => toggleHint())
+document.querySelector('#hint div').addEventListener("click", _ => toggleHint())
 document.addEventListener("DOMContentLoaded", newGame)

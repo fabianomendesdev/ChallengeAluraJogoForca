@@ -8,8 +8,9 @@
     --color3: #fae9b9;
     --color4: #658ff3;
     --color5: #62c0f0;
-    --color6: #FFF;
-    --color7: #000;
+    --color6: #40ae39;
+    --color7: #FFF;
+    --color8: #000;
 }
 
 /* Stilo global */
@@ -68,7 +69,7 @@ body {
 
 /* Game */
 #game {
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,7 +81,7 @@ body {
 /* Forca */
 #game #hangman {
     position: relative;
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 #game #hangman #hangmanImg {
@@ -97,7 +98,7 @@ body {
 
 /* Teclado */
 #game #keyboard {
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 500px;
     margin-top: 25px;
     animation: showKeyboard 1s ease-in-out;
@@ -118,18 +119,32 @@ body {
     height: 50px;
     margin: 2px;
     font-size: 30px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: var(--color5);
 }
 
 #game #keyboard .line button:hover {
+    box-shadow: 0 0 30px #FFF;
     transform: scale(1.15);
 }
 
 #game #keyboard .line .error {
-    background-color: #e41e1d;
+    background: linear-gradient(45deg, var(--color1), var(--color2));
+    color: var(--color7);
+}
+
+#game #keyboard .line .error:hover {
+    box-shadow: 0 0 10px var(--color2);
 }
 
 #game #keyboard .line .hit {
-    background-color: #f17e23;
+    background: linear-gradient(45deg, var(--color3), var(--color7));
+    color: var(--color6);
+}
+
+#game #keyboard .line .hit:hover {
+    box-shadow: 0 0 10px var(--color3);
 }
 
 #game #keyboard .line .error:hover,
@@ -141,17 +156,17 @@ body {
 /* Word */
 #word {
     margin-top: 20px;
-    background-color: yellow;
+    /* background-color: yellow; */
     min-height: 50px;
     display: flex;
     justify-content: center;
-    width: 500px;
+    min-width: 100px;
 }
 
 #word input {
     border: none;
     width: 30px;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid var(--color7);
     padding: 2px 5px;
     font-size: 30px;
     margin: 0 5px;
@@ -159,16 +174,18 @@ body {
     text-align: center;
     outline: none;
     font-weight: bold;
+    color: var(--color7);
 }
 
-#word.hit input {
-    color: green;
-}
+/* Modificar palavra quando aver um acerto */
+/* #word.hit input {
+    
+} */
 
 /* Ações */
 #actions {
     margin-top: 25px;
-    background-color: yellow;
+    /* background-color: yellow; */
     display: flex;
 }
 
@@ -180,27 +197,65 @@ body {
     padding: 10px 25px;
     font-size: 30px;
     margin: 0 10px;
+    border-radius: 5px;
+    color: var(--color5);
+    font-weight: bold;
+}
+
+#actions button:hover {
+    box-shadow: 0 0 30px #FFF;
+    transform: scale(1.1);
 }
 
 /* Dica */
 #hint {
-    height: 60px;
+    height: 85px;
     min-width: 20px;
     margin-top: 25px;
-    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#hint:hover {
+#hint.toggle #toggleHint {
+    display: none;
+}
+
+#hint > p {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+#hint div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hint div:hover {
     cursor: pointer;
 }
 
-#hint #toggleHint {
-    font-size: 30px;
+#hint div #toggleHint {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-size: 40px;
     padding: 10px 15px;
     margin: 0;
 }
 
-#hint.toggle #toggleHint {
+#hint i {
+    font-size: 40px;
+}
+
+#hint.toggle #eye-alt {
+    display: block !important;
+}
+
+#hint.toggle #eye-open {
     display: none;
 }
 
