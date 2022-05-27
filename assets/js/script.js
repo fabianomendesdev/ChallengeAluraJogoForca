@@ -20,6 +20,7 @@ var wordDrawn = (function() {
     return words[Math.floor(Math.random() * words.length)]
 })()
 
+// Novo jogo
 const newGame = () => {
     hitCounter = 0
     removeDoll()
@@ -33,6 +34,7 @@ const newGame = () => {
     toggleWordColor(false)
 }
 
+// Reiniciar jogo
 const restart = () => {
     hitCounter = 0
     removeDoll()
