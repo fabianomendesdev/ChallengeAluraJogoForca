@@ -301,12 +301,12 @@ body {
 }
 
 #divShowLostWinMsg .info {
-    font-size: 20px;
+    font-size: 25px;
     color: var(--color5);
 }
 
 #divShowLostWinMsg div {
-    background-color: #40ae39;
+    /* background-color: #40ae39; */
     display: flex;
     justify-content: center;
 }
@@ -314,7 +314,11 @@ body {
 #divShowLostWinMsg div button {
     margin: 0 5px;
     padding: 5px 10px;
-    background-color: var(--color5);
+    border-radius: 5px;
+    border: none;
+    color: var(--color7);
+    background: linear-gradient(45deg, var(--color4), var(--color5));
+    font-size: 18px;
 }
 
 /* Animações */
