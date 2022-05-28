@@ -277,14 +277,18 @@ const showHideKeyboard = (op = false) => {
 
 // Eventos
 document.querySelector('#hint div').addEventListener("click", _ => toggleHint())
+document.addEventListener("DOMContentLoaded", _ => showHideSection("menu"))
+
+// Retorna o array dos elementos
+const query = (name) => document.querySelectorAll('.'+name)
 
 // Eventos de rota
 let routeArray = [
-    {key: document.querySelectorAll('.newGame'), func: _ => {newGame()}},
-    {key: document.querySelectorAll('.giveUp'), func: _ => {showHideSection("menu"); restart()}},
-    {key: document.querySelectorAll('.playButton'), func: _ => {showHideSection("game"); newGame()}},
-    {key: document.querySelectorAll('.addWordButton'), func: _ => {showHideSection("addWord")}},
-    {key: document.querySelectorAll('.backToMenu'), func: _ => {showHideSection("menu")}}
+    {key: query('newGame'), func: _ => {newGame()}},
+    {key: query('giveUp'), func: _ => {showHideSection("menu"); restart()}},
+    {key: query('playButton'), func: _ => {showHideSection("game"); newGame()}},
+    {key: query('addWordButton'), func: _ => {showHideSection("addWord")}},
+    {key: query('backToMenu'), func: _ => {showHideSection("menu")}}
 ]
 
 routeArray.forEach((item) => {

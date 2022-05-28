@@ -19,12 +19,33 @@
     <main id="main">
         <div class="container-md">
             <section id="menu">
+                <p>Bem-Vindo(a)</p>
                 <button class="playButton">Jogar</button>
                 <button class="addWordButton">Adicionar palavra</button>
             </section>
             <section id="addWord" class="hidden">
-                <button class="playButton">Jogar</button>
-                <button class="backToMenu">Voltar</button>
+                <p>Adicione palavras</p>
+
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">8</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+
+                <div class="input-group flex-nowrap">
+                    <!-- is-valid -->
+                    <!-- is-invalid -->
+                    <span class="input-group-text" id="addon-wrapping">9</span>
+                    <input type="text" class="form-control is-valid" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+
+                <div id="divActionsHint">
+
+                </div>
+
+                <div id="divAddWordActions">
+                    <button class="playButton">Jogar</button>
+                    <button class="backToMenu">Voltar</button>
+                </div>
             </section>
             <section id="game" class="hidden">
                 <div id="hangman">

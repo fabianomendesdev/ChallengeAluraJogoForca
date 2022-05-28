@@ -83,6 +83,9 @@ body {
 /* Container */
 .container-md {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
 }
 
@@ -95,16 +98,84 @@ body {
 
 /* Menu */
 #menu {
-    background-color: red;
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    background-color: var(--color7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    border-radius: 15px;
+}
+
+#menu p {
+    background-image: linear-gradient(45deg, var(--color4), var(--color5));
+    color: var(--color8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--color4);
+}
+
+#menu button {
+    width: 80%;
+    margin: 10px 0;
+    padding: 5px 0;
+    border: unset;
+    border-radius: 10px;
+    font-size: 25px;
+    color: var(--color7);
+    background-image: linear-gradient(45deg, var(--color4), var(--color5));
+}
+
+#menu button:hover {
+    box-shadow: 0 0 30px var(--color5);
+    transform: scale(1.05);
 }
 
 /* Adicionar palavra */
 #addWord {
-    background-color: yellow;
-    width: 500px;
-    height: 500px;
+    background-color: var(--color7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    border-radius: 15px;
+}
+
+#addWord #divActionsHint {
+    
+}
+
+#addWord #divActionsHint button {
+    
+}
+
+#addWord #divActionsHint button:hover {
+    box-shadow: 0 0 30px var(--color7);
+    transform: scale(1.05);   
+}
+
+#addWord #divAddWordActions {
+    margin-top: 10px;
+}
+
+#addWord #divAddWordActions button {
+    width: 80px;
+    border: unset;
+    padding: 5px 0;
+    border-radius: 10px;
+    font-size: 25px;
+    color: var(--color7);
+    background-image: linear-gradient(45deg, var(--color4), var(--color5));
+}
+
+#addWord #divAddWordActions button:hover {
+    box-shadow: 0 0 30px var(--color7);
+    transform: scale(1.05);
 }
 
 /* Jogo */
@@ -114,8 +185,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
     padding-bottom: 40px;
 }
 
