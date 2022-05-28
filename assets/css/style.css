@@ -116,7 +116,6 @@ body {
     -webkit-text-fill-color: transparent;
     font-size: 30px;
     font-weight: 600;
-    color: var(--color4);
 }
 
 #menu button {
@@ -146,12 +145,25 @@ body {
     border-radius: 15px;
 }
 
+#addWord .input-group {
+    margin-top: 10px;
+}
+
 #addWord #divActionsHint {
-    
+    margin-top: 15px;
+    display: flex;
 }
 
 #addWord #divActionsHint button {
-    
+    border: unset;
+    background-color: unset;
+    margin: 0 10px;
+    font-size: 30px;
+    background-image: linear-gradient(45deg, var(--color4), var(--color5));
+    color: var(--color8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #addWord #divActionsHint button:hover {
@@ -160,15 +172,16 @@ body {
 }
 
 #addWord #divAddWordActions {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 #addWord #divAddWordActions button {
     width: 80px;
     border: unset;
     padding: 5px 0;
+    margin: 0 10px;
     border-radius: 10px;
-    font-size: 25px;
+    font-size: 20px;
     color: var(--color7);
     background-image: linear-gradient(45deg, var(--color4), var(--color5));
 }
