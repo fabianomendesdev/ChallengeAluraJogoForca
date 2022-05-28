@@ -125,7 +125,7 @@ body {
 }
 
 #game #keyboard .line button:hover {
-    box-shadow: 0 0 30px #FFF;
+    box-shadow: 0 0 30px var(--color7);
     transform: scale(1.15);
 }
 
@@ -175,6 +175,7 @@ body {
     outline: none;
     font-weight: bold;
     color: var(--color7);
+    cursor: default;
 }
 
 /* Modificar palavra quando aver um acerto */
@@ -203,7 +204,7 @@ body {
 }
 
 #actions button:hover {
-    box-shadow: 0 0 30px #FFF;
+    box-shadow: 0 0 30px var(--color7);
     transform: scale(1.1);
 }
 
@@ -268,16 +269,23 @@ body {
 }
 
 /* Mostrar mensagem de erro e acertos */
-#divShowLostWinMsg {
+#containerShowLostWinMsg {
     position: absolute;
-    transform: translate(-50%,-50%);
     top: 50px;
     left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#divShowLostWinMsg {
+    margin: auto;
+    top: 0px;
     background-color: var(--color7);
     border-radius: 5px;
     min-width: 250px;
     padding: 15px 10px;
-    animation: showLostWinMsg 3s ease-in-out;
+    opacity: 100%;
+    transform: translateY(0);
+    animation: showLostWinMsg 1s ease-in-out;
 }
 
 #divShowLostWinMsg > * {
@@ -306,7 +314,6 @@ body {
 }
 
 #divShowLostWinMsg div {
-    /* background-color: #40ae39; */
     display: flex;
     justify-content: center;
 }
@@ -319,6 +326,11 @@ body {
     color: var(--color7);
     background: linear-gradient(45deg, var(--color4), var(--color5));
     font-size: 18px;
+}
+
+#divShowLostWinMsg div button:hover {
+    box-shadow: 0 0 10px var(--color5);
+    transform: scale(1.05);
 }
 
 /* Animações */
@@ -344,10 +356,12 @@ body {
 
 @keyframes showLostWinMsg {
     0%{
-		/* transform: translateY(-50px); */
+		opacity: 0%;
+        transform: translateY(-50px);
 	}
-
-	100%{
-		/* transform: translateY(0); */
+    
+    100%{
+		opacity: 100%;
+        transform: translateY(0);
 	}
 }

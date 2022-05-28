@@ -96,13 +96,18 @@ const showLostWinMsg = (errorWin, msg, word) => {
     element.appendChild(pElement)
     element.appendChild(p2Element)
     element.appendChild(divElement)
-    container.appendChild(element)
+    
+
+    const element2 = document.createElement('div')
+    element2.id = "containerShowLostWinMsg"
+    container.appendChild(element2)
+    element2.appendChild(element)
 }
 
 // Fechar mensagem de erro ou de acerto
 const closeLostwinMsg = () => {
     if(document.querySelector("#divShowLostWinMsg")){
-        const divShowLostWinMsg = document.querySelector("#divShowLostWinMsg")
+        const divShowLostWinMsg = document.querySelector("#containerShowLostWinMsg")
         container.removeChild(divShowLostWinMsg)
     }
 }
