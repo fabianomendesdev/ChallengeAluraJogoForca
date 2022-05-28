@@ -37,7 +37,7 @@ body {
     background-attachment: fixed;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 1fr 40px;
+    grid-template-rows: 80px 1fr 60px;
     grid-template-areas: 
     "header"
     "main"
@@ -52,13 +52,32 @@ body {
 
 #main {
     grid-area: main;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 140px);
     /* background-color: var(--color1); */
 }
 
 #footer {
     grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* background-color: yellow; */
+    /* background-color: #FFF; */
+}
+
+#footer p {
+    font-size: 25px;
+    margin: 0 12px;
+    color: var(--color7);
+}
+
+#footer a {
+    color: unset;
+    text-decoration: unset;
+}
+
+#footer p i {
+    margin-right: 5px;
 }
 
 /* Container */
@@ -76,6 +95,7 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
+    padding-bottom: 40px;
 }
 
 /* Forca */
@@ -270,8 +290,8 @@ body {
 
 /* Mostrar mensagem de erro e acertos */
 #containerShowLostWinMsg {
-    position: absolute;
-    top: 50px;
+    position: fixed;
+    top: 100px;
     left: 50%;
     transform: translate(-50%,-50%);
 }
