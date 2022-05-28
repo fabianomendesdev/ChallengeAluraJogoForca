@@ -86,7 +86,28 @@ body {
     height: 100%;
 }
 
-/* Game */
+/* Estrura esconder global */
+#menu.hidden,
+#addWord.hidden,
+#game.hidden {
+    display: none;
+}
+
+/* Menu */
+#menu {
+    background-color: red;
+    width: 500px;
+    height: 500px;
+}
+
+/* Adicionar palavra */
+#addWord {
+    background-color: yellow;
+    width: 500px;
+    height: 500px;
+}
+
+/* Jogo */
 #game {
     /* background-color: red; */
     display: flex;

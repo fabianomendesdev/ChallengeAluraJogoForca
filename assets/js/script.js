@@ -9,6 +9,9 @@ const words = [
 let hitCounter = 0
 
 // Variáveis HMTL
+const menuSection = document.querySelector("#menu")
+const gameSection = document.querySelector("#game") 
+const addWordSection = document.querySelector("#addWord")
 const divWord = document.querySelector('#word')
 const divKeyboard = document.querySelector('#keyboard')
 const divActions = document.querySelector('#actions')
@@ -59,6 +62,29 @@ const win = () => {
 const lost = () => {
     showHideKeyboard(false)
     showLostWinMsg(false, "Você Perdeu!", wordDrawn.name.toLocaleUpperCase())
+}
+
+// Mostrar e essconder seção
+const showHideSection = (value = "menu") => {
+    switch(value){
+        case "menu":
+            gameSection.classList.add("hidden")
+            addWordSection.classList.add("hidden")
+            menuSection.classList.remove("hidden")
+            break
+        
+        case "addWord":
+            gameSection.classList.add("hidden")
+            menuSection.classList.add("hidden")
+            addWordSection.classList.remove("hidden")
+            break
+
+        case "game":
+            addWordSection.classList.add("hidden")
+            menuSection.classList.add("hidden")
+            gameSection.classList.remove("hidden")
+            break
+    }
 }
 
 // Mostrar mensagens de erro e acerto
@@ -250,7 +276,19 @@ const showHideKeyboard = (op = false) => {
 }
 
 // Eventos
-document.querySelector('#actions #newGame').addEventListener("click", newGame)
-document.querySelector('#actions #restart').addEventListener("click", restart)
 document.querySelector('#hint div').addEventListener("click", _ => toggleHint())
-document.addEventListener("DOMContentLoaded", newGame)
+
+// Eventos de rota
+let routeArray = [
+    {key: document.querySelectorAll('.newGame'), func: _ => {newGame()}},
+    {key: document.querySelectorAll('.giveUp'), func: _ => {showHideSection("menu"); restart()}},
+    {key: document.querySelectorAll('.playButton'), func: _ => {showHideSection("game"); newGame()}},
+    {key: document.querySelectorAll('.addWordButton'), func: _ => {showHideSection("addWord")}},
+    {key: document.querySelectorAll('.backToMenu'), func: _ => {showHideSection("menu")}}
+]
+
+routeArray.forEach((item) => {
+    item.key.forEach((element) => {
+        element.addEventListener('click', item.func)
+    })
+})
