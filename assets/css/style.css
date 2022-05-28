@@ -228,6 +228,10 @@ body {
     margin-bottom: 0;
 }
 
+#hint * {
+    color: var(--color7);
+}
+
 #hint div {
     display: flex;
     align-items: center;
@@ -255,8 +259,62 @@ body {
     display: block !important;
 }
 
+#hint.toggle #eye-alt:hover {
+    text-shadow: 0 0 20px var(--color7);
+}
+
 #hint.toggle #eye-open {
     display: none;
+}
+
+/* Mostrar mensagem de erro e acertos */
+#divShowLostWinMsg {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50px;
+    left: 50%;
+    background-color: var(--color7);
+    border-radius: 5px;
+    min-width: 250px;
+    padding: 15px 10px;
+    animation: showLostWinMsg 3s ease-in-out;
+}
+
+#divShowLostWinMsg > * {
+    width: 100%;
+}
+
+#divShowLostWinMsg p {
+    text-align: center;
+}
+
+#divShowLostWinMsg .msg {
+    font-size: 30px;
+}
+
+#divShowLostWinMsg .msg.error {
+    color: var(--color1);
+}
+
+#divShowLostWinMsg .msg.hit {
+    color: var(--color6);
+}
+
+#divShowLostWinMsg .info {
+    font-size: 20px;
+    color: var(--color5);
+}
+
+#divShowLostWinMsg div {
+    background-color: #40ae39;
+    display: flex;
+    justify-content: center;
+}
+
+#divShowLostWinMsg div button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: var(--color5);
 }
 
 /* Animações */
@@ -277,5 +335,15 @@ body {
 
 	80%{
 		opacity: 100%;
+	}
+}
+
+@keyframes showLostWinMsg {
+    0%{
+		/* transform: translateY(-50px); */
+	}
+
+	100%{
+		/* transform: translateY(0); */
 	}
 }

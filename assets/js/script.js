@@ -12,6 +12,7 @@ let hitCounter = 0
 const divWord = document.querySelector('#word')
 const divKeyboard = document.querySelector('#keyboard')
 const divActions = document.querySelector('#actions')
+const container = document.querySelectorAll('.container-md')[0]
 const divHangman = document.querySelector('#hangman')
 const allKeyboardButtons = document.querySelectorAll("#keyboard .line button")
 
@@ -30,6 +31,7 @@ const newGame = () => {
     document.querySelector('#toggleHint').innerText = wordDrawn.hint
     toggleHint(true, true)
     removeKeyboardHitsAndMisses()
+    closeLostwinMsg()
     showHideKeyboard(true)
     toggleWordColor(false)
 }
@@ -41,6 +43,7 @@ const restart = () => {
     removeWordView()
     createWordView(wordDrawn.name)
     removeKeyboardHitsAndMisses()
+    closeLostwinMsg()
     showHideKeyboard(true)
     toggleWordColor(false)
 }
@@ -49,13 +52,59 @@ const restart = () => {
 const win = () => {
     showHideKeyboard(false)
     toggleWordColor(true)
-    console.log("Ganhou")
+    showLostWinMsg(true, "Você Ganhou!", wordDrawn.name.toLocaleUpperCase())
 }
 
 // Perdeu
 const lost = () => {
     showHideKeyboard(false)
-    console.log("Perdeu")
+    showLostWinMsg(false, "Você Perdeu!", wordDrawn.name.toLocaleUpperCase())
+}
+
+// Mostrar mensagens de erro e acerto
+const showLostWinMsg = (errorWin, msg, word) => {
+    const element = document.createElement('div')
+    element.id = "divShowLostWinMsg"
+    
+    const pElement = document.createElement('p')
+    pElement.innerText = msg
+    pElement.classList.add('msg')
+
+    const closeButtonElement = document.createElement('button')
+    closeButtonElement.innerText = "Fechar"
+    closeButtonElement.addEventListener('click', closeLostwinMsg)
+
+    const newGameButtonElement = document.createElement('button')
+    newGameButtonElement.innerText = "Novo jogo"
+    newGameButtonElement.addEventListener('click', newGame)
+
+    const divElement = document.createElement('div')
+    divElement.appendChild(newGameButtonElement)
+    divElement.appendChild(closeButtonElement)
+    
+    const p2Element = document.createElement('p')
+    p2Element.classList.add('info')
+
+    if(errorWin){
+        p2Element.innerText = "Parabéns!"
+        pElement.classList.add('hit')
+    }else{
+        p2Element.innerText = "Palavra: "+ word
+        pElement.classList.add('error')
+    }
+
+    element.appendChild(pElement)
+    element.appendChild(p2Element)
+    element.appendChild(divElement)
+    container.appendChild(element)
+}
+
+// Fechar mensagem de erro ou de acerto
+const closeLostwinMsg = () => {
+    if(document.querySelector("#divShowLostWinMsg")){
+        const divShowLostWinMsg = document.querySelector("#divShowLostWinMsg")
+        container.removeChild(divShowLostWinMsg)
+    }
 }
 
 // Criar inputs de mostrar as palavras
