@@ -19,6 +19,10 @@ const container = document.querySelectorAll('.container-md')[0]
 const divHangman = document.querySelector('#hangman')
 const allKeyboardButtons = document.querySelectorAll("#keyboard .line button")
 
+// Botões
+const cleanButton = document.querySelector("#cleanButton")
+const addWordButton = document.querySelector("#addWordButton")
+
 // inputs
 const wordInput = document.querySelector("#wordInput")
 const hintInput = document.querySelector("#hintInput")
@@ -175,6 +179,16 @@ const verifyError = (element, max) => {
     }
 }
 
+// Limpar inputs
+const cleanAddWord = () => {
+    alert("apagar")
+}
+
+// Adicionar palavra
+const addWord = () => {
+    alert("adicionar")
+}
+
 // Remover inputs de mostrar palavras
 const removeWordView = () => {
     document.querySelectorAll('#word input').forEach((input) => {
@@ -307,16 +321,19 @@ wordInput.addEventListener("input", _ => verifyError(wordInput, 8))
 hintInput.addEventListener("input", _ => verifyError(hintInput, 9))
 document.addEventListener("DOMContentLoaded", _ => showHideSection("menu"))
 
+cleanButton.addEventListener('click', cleanAddWord)
+addWordButton.addEventListener('click', addWord)
+
 // Retorna o array dos elementos
 const query = (name) => document.querySelectorAll('.'+name)
 
 // Eventos de rota
 let routeArray = [
-    {key: query('newGame'), func: _ => {newGame()}},
-    {key: query('giveUp'), func: _ => {showHideSection("menu"); restart()}},
-    {key: query('playButton'), func: _ => {showHideSection("game"); newGame()}},
-    {key: query('addWordButton'), func: _ => {showHideSection("addWord")}},
-    {key: query('backToMenu'), func: _ => {showHideSection("menu")}}
+    {key: query('routeNewGame'), func: _ => {newGame()}},
+    {key: query('routeGiveUp'), func: _ => {showHideSection("menu"); restart()}},
+    {key: query('routePlayButton'), func: _ => {showHideSection("game"); newGame()}},
+    {key: query('routeAddWordButton'), func: _ => {showHideSection("addWord")}},
+    {key: query('routeBackToMenu'), func: _ => {showHideSection("menu")}}
 ]
 
 routeArray.forEach((item) => {

@@ -20,8 +20,8 @@
         <div class="container-md">
             <section id="menu">
                 <p>Bem-Vindo(a)</p>
-                <button class="playButton">Jogar</button>
-                <button class="addWordButton">Adicionar palavra</button>
+                <button class="routePlayButton">Jogar</button>
+                <button class="routeAddWordButton">Adicionar palavra</button>
             </section>
             <section id="addWord" class="hidden">
                 <p>Adicione palavras</p>
@@ -39,13 +39,13 @@
                 </div>
 
                 <div id="divActionsHint">
-                    <button><i class="bi bi-trash-fill"></i></button>
-                    <button><i class="bi bi-plus-circle-fill"></i></button>
+                    <button id="cleanButton"><i class="bi bi-trash-fill"></i></button>
+                    <button id="addWordButton"><i class="bi bi-plus-circle-fill"></i></button>
                 </div>
 
                 <div id="divAddWordActions">
-                    <button class="playButton">Jogar</button>
-                    <button class="backToMenu">Voltar</button>
+                    <button class="routePlayButton">Jogar</button>
+                    <button class="routeBackToMenu">Voltar</button>
                 </div>
             </section>
             <section id="game" class="hidden">
@@ -90,8 +90,8 @@
                     </div>
                 </div>
                 <div id="actions">
-                    <button class="newGame">Novo jogo</button>
-                    <button class="giveUp">Desistir</button>
+                    <button class="routeNewGame">Novo jogo</button>
+                    <button class="routeGiveUp">Desistir</button>
                 </div>
                 <div id="hint" class="toggle">
                     <p>Dica</p>

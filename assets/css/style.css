@@ -159,6 +159,16 @@ body {
     margin-top: 10px;
 }
 
+#addWord .input-group input {
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+#addWord .input-group span {
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+}
+
 #addWord .input-group.is-valid span {
     background-color: var(--color6);
     color: var(--color7);
@@ -174,7 +184,7 @@ body {
 }
 
 #addWord #divActionsHint {
-    margin-top: 15px;
+    margin-top: 20px;
     display: flex;
 }
 
@@ -196,7 +206,7 @@ body {
 }
 
 #addWord #divAddWordActions {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 #addWord #divAddWordActions button {
