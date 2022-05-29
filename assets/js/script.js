@@ -159,34 +159,46 @@ const createWordView = (name) => {
 
 // verificar erros das palavras
 const verifyError = (element, max) => {
-    console.log(element)
-    console.log(max)
-    
-    element.classList.remove('is-invalid')
-    element.classList.remove('is-valid')
-    element.parentElement.classList.remove("is-invalid")
-    element.parentElement.classList.remove("is-valid")
+    removeClassInputsClean(element)
 
-    if(element.value.length == ""){
+    if(element.value.length == "" || element.value.length > max){
         element.classList.add('is-invalid')
         element.parentElement.classList.add("is-invalid")
-    }else if (element.value.length > max) {
-        element.classList.add('is-invalid')
-        element.parentElement.classList.add("is-invalid")
+        return true
     }else{
         element.classList.add('is-valid')
         element.parentElement.classList.add("is-valid")
+        return false
     }
 }
 
 // Limpar inputs
 const cleanAddWord = () => {
-    alert("apagar")
+    wordInput.value = ""
+    removeClassInputsClean(wordInput)
+    
+    hintInput.value = ""
+    removeClassInputsClean(hintInput)
+}
+
+// Remove class is-valid e is-invalid
+const removeClassInputsClean = (element) => {
+    element.classList.remove('is-invalid')
+    element.classList.remove('is-valid')
+    element.parentElement.classList.remove("is-invalid")
+    element.parentElement.classList.remove("is-valid")
 }
 
 // Adicionar palavra
 const addWord = () => {
-    alert("adicionar")
+    if(verifyError(wordInput, 8) || verifyError(hintInput, 9)){
+        // alert("tem error")
+
+    }else{
+        // alert("não tem erro")
+        words.push({name: wordInput.value, hint: hintInput.value})
+        cleanAddWord()
+    }
 }
 
 // Remover inputs de mostrar palavras
