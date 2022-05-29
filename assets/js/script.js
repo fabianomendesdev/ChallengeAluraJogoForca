@@ -19,6 +19,10 @@ const container = document.querySelectorAll('.container-md')[0]
 const divHangman = document.querySelector('#hangman')
 const allKeyboardButtons = document.querySelectorAll("#keyboard .line button")
 
+// inputs
+const wordInput = document.querySelector("#wordInput")
+const hintInput = document.querySelector("#hintInput")
+
 // Sorteio das palavras
 var wordDrawn = (function() {
     return words[Math.floor(Math.random() * words.length)]
@@ -146,6 +150,31 @@ const createWordView = (name) => {
         elementChildren.type = "text"
         elementChildren.setAttribute('readonly', '')
         motherElement.appendChild(elementChildren)
+    }
+}
+
+// verificar erros das palavras
+const verifyError = (element, max) => {
+    console.log(element)
+    console.log(max)
+    
+    element.classList.remove('is-invalid')
+    element.classList.remove('is-valid')
+    element.parentElement.classList.remove("is-invalid")
+    element.parentElement.classList.remove("is-valid")
+
+    if(element.value.length == ""){
+        element.classList.add('is-invalid')
+        element.parentElement.classList.add("is-invalid")
+    }else if(element.value.length < 2){
+        element.classList.add('is-invalid')
+        element.parentElement.classList.add("is-invalid")
+    }else if (element.value.length > max) {
+        element.classList.add('is-invalid')
+        element.parentElement.classList.add("is-invalid")
+    }else{
+        element.classList.add('is-valid')
+        element.parentElement.classList.add("is-valid")
     }
 }
 
@@ -277,6 +306,8 @@ const showHideKeyboard = (op = false) => {
 
 // Eventos
 document.querySelector('#hint div').addEventListener("click", _ => toggleHint())
+wordInput.addEventListener("input", _ => verifyError(wordInput, 8))
+hintInput.addEventListener("input", _ => verifyError(hintInput, 9))
 document.addEventListener("DOMContentLoaded", _ => showHideSection("menu"))
 
 // Retorna o array dos elementos
