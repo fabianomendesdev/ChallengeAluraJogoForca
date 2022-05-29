@@ -225,6 +225,33 @@ body {
     transform: scale(1.05);
 }
 
+#showAlert {
+    background-color: var(--color7);
+    border-radius: 10px;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 15px;
+    -webkit-box-shadow: 6px 4px 15px 3px rgba(0,0,0,0.45); 
+    box-shadow: 6px 4px 15px 3px rgba(0,0,0,0.45);
+    animation: showAlert 1s ease-in-out;
+}
+
+#showAlert p {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#showAlert.hit p {
+    color: var(--color6);
+}   
+
+#showAlert.error p {
+    color: var(--color1);
+}
+
 /* Jogo */
 #game {
     /* background-color: red; */
@@ -520,5 +547,15 @@ body {
     100%{
 		opacity: 100%;
         transform: translateY(0);
+	}
+}
+
+@keyframes showAlert {
+    0%{
+		opacity: 0%;
+	}
+    
+    100%{
+		opacity: 100%;
 	}
 }

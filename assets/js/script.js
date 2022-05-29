@@ -97,6 +97,9 @@ const showHideSection = (value = "menu") => {
 
 // Mostrar mensagens de erro e acerto
 const showLostWinMsg = (errorWin, msg, word) => {
+    const element2 = document.createElement('div')
+    element2.id = "containerShowLostWinMsg"
+
     const element = document.createElement('div')
     element.id = "divShowLostWinMsg"
     
@@ -106,7 +109,7 @@ const showLostWinMsg = (errorWin, msg, word) => {
 
     const closeButtonElement = document.createElement('button')
     closeButtonElement.innerText = "Fechar"
-    closeButtonElement.addEventListener('click', closeLostwinMsg)
+    closeButtonElement.addEventListener('click', _ => removeElement(element2))
 
     const newGameButtonElement = document.createElement('button')
     newGameButtonElement.innerText = "Novo jogo"
@@ -131,9 +134,6 @@ const showLostWinMsg = (errorWin, msg, word) => {
     element.appendChild(p2Element)
     element.appendChild(divElement)
     
-
-    const element2 = document.createElement('div')
-    element2.id = "containerShowLostWinMsg"
     container.appendChild(element2)
     element2.appendChild(element)
 }
@@ -143,6 +143,12 @@ const closeLostwinMsg = () => {
     if(document.querySelector("#divShowLostWinMsg")){
         const divShowLostWinMsg = document.querySelector("#containerShowLostWinMsg")
         container.removeChild(divShowLostWinMsg)
+    }
+}
+
+const removeElement = (element) => {
+    if(element){
+        element.remove()
     }
 }
 
@@ -191,14 +197,33 @@ const removeClassInputsClean = (element) => {
 
 // Adicionar palavra
 const addWord = () => {
+    verifyError(wordInput, 8)
+    verifyError(hintInput, 9)
     if(verifyError(wordInput, 8) || verifyError(hintInput, 9)){
-        // alert("tem error")
-
+        showAlert(true, "Erro ao adicionar palavra!")
     }else{
-        // alert("não tem erro")
+        showAlert(false, "Palavra adicionada com sucesso!")
         words.push({name: wordInput.value, hint: hintInput.value})
         cleanAddWord()
     }
+}
+
+const showAlert = (error, msg) => {
+    const element = document.createElement('div')
+    element.id = "showAlert"
+    
+    const pElement = document.createElement('p')
+    pElement.innerText = msg
+
+    if(error){
+        element.classList.add("error")
+    }else{
+        element.classList.add("hit")
+    }
+
+    element.appendChild(pElement)
+    container.appendChild(element)
+    setTimeout(_ => removeElement(element), 2000)
 }
 
 // Remover inputs de mostrar palavras
