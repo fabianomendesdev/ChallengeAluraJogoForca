@@ -166,9 +166,6 @@ const verifyError = (element, max) => {
     if(element.value.length == ""){
         element.classList.add('is-invalid')
         element.parentElement.classList.add("is-invalid")
-    }else if(element.value.length < 2){
-        element.classList.add('is-invalid')
-        element.parentElement.classList.add("is-invalid")
     }else if (element.value.length > max) {
         element.classList.add('is-invalid')
         element.parentElement.classList.add("is-invalid")
