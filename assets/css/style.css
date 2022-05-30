@@ -25,6 +25,8 @@
     position: absolute;
     top: 30px;
     left: 30px;
+    width: 37px;
+    height: 53px;
     animation: float infinite 5s ease-in-out;
 }
 
@@ -71,12 +73,16 @@ body {
     color: var(--color7);
 }
 
-#footer a {
+#footer div {
+    display: flex;
+}
+
+#footer div a {
     color: unset;
     text-decoration: unset;
 }
 
-#footer p i {
+#footer div p i {
     margin-right: 5px;
 }
 
@@ -226,6 +232,7 @@ body {
     transform: scale(1.05);
 }
 
+/* Alerta de erro ou confirmação */
 #showAlert {
     background-color: var(--color7);
     border-radius: 10px;
@@ -285,6 +292,7 @@ body {
 #game #keyboard {
     /* background-color: yellow; */
     width: 500px;
+    /* height: 162px; */
     margin-top: 25px;
     animation: showKeyboard 1s ease-in-out;
 }
@@ -296,12 +304,14 @@ body {
 #game #keyboard .line {
     display: flex;
     justify-content: center;
+    margin: 3px 0;
 }
 
 #game #keyboard .line button {
     border: none;
-    width: 50px;
-    height: 50px;
+    /* width: 50px; */
+    width: calc(100% / 10);
+    /* height: 50px; */
     margin: 2px;
     font-size: 30px;
     font-weight: bold;
@@ -434,7 +444,6 @@ body {
     user-select: none;
     font-size: 40px;
     padding: 10px 15px;
-    margin: 0;
 }
 
 #hint i {
@@ -559,4 +568,112 @@ body {
     100%{
 		opacity: 100%;
 	}
+}
+
+/* Responsividade */
+@media(max-width: 1366px) {      
+    #game #hangman #hangmanImg {
+        width: 300px;
+    }
+    
+    #game #hangman #imgPuppet {
+        top: 57.5%;
+        height: 200px;
+    }
+    
+    /* #game #keyboard {
+        width: 500px;
+    } */
+    
+    #game #keyboard .line button {
+        border: none;
+        font-size: 30px;
+    } 
+    
+    #actions button {
+        font-size: 25px;
+    }
+    
+    #hint div #toggleHint {
+        font-size: 35px;
+    }
+    
+    #hint i {
+        font-size: 35px;
+    }
+}
+
+@media(max-width: 720px) { 
+    body {
+        grid-template-rows: 60px 1fr 60px;
+    }
+
+    #main {
+        min-height: calc(100vh - 120px);
+    }
+    
+    #svgAlura {
+        top: 20px;
+        left: 20px;
+        width: 30px;
+        height: 46px;
+    }
+}
+
+@media(max-width: 530px) {    
+    #game #keyboard {
+        width: 400px;
+    }
+    
+    /* #game #keyboard .line button {
+        font-size: 30px;
+    }  */
+}
+
+@media(max-width: 430px) {  
+    #game #hangman #hangmanImg {
+        width: 250px;
+    }
+    
+    #game #hangman #imgPuppet {
+        top: 58%;
+        height: 180px;
+    }
+    
+    #game #keyboard {
+        width: 350px;
+    }
+    
+    #game #keyboard .line button {
+        font-size: 25px;
+    } 
+    
+    #actions button {
+        height: 45px;
+        padding: 8px 20px;
+    }
+}
+
+@media(max-width: 512px) {    
+    body {
+        grid-template-rows: 60px 1fr 90px;
+    }
+
+    #main {
+        min-height: calc(100vh - 150px);
+    }
+
+    #footer {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 450px) {    
+    #menu {
+        width: 100%;
+    }
+
+    #addWord {
+        width: 100%;
+    }
 }
