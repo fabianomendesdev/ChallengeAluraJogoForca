@@ -1,12 +1,53 @@
 // Base de palavras
 const words = [
-    {name: "Macaco", hint: "Animal"},
     {name: "Banana", hint: "Fruta"},
-    {name: "Abacate", hint: "Fruta"}
+    {name: "Zíper", hint: "Objeto"},
+    {name: "Bolo", hint: "Comida"},
+    {name: "Juiz", hint: "Profissão"},
+    {name: "Marreco", hint: "Animal"},
+    {name: "Baralho", hint: "Jogo"},
+    {name: "Cocada", hint: "Comida"},
+    {name: "Perito", hint: "Profissão"},
+    {name: "Freezer", hint: "Objeto"},
+    {name: "Vespa", hint: "Inseto"},
+    {name: "Pastel", hint: "Comida"},
+    {name: "Bola", hint: "Jogo"},
+    {name: "Porco", hint: "Animal"},
+    {name: "Canjica", hint: "Comida"},
+    {name: "Formiga", hint: "Inseto"},
+    {name: "Pequi", hint: "Fruta"},
+    {name: "Tapioca", hint: "Comida"},
+    {name: "Webcam", hint: "Objeto"},
+    {name: "Cobra", hint: "Animal"},
+    {name: "Forca", hint: "Jogo"},
+    {name: "Fava", hint: "Comida"},
+    {name: "Abelha", hint: "Inseto"},
+    {name: "Anzol", hint: "Objeto"},
+    {name: "Coxinha", hint: "Comida"},
+    {name: "Abacate", hint: "Fruta"},
+    {name: "Barata", hint: "Inseto"},
+    {name: "Dominó", hint: "Jogo"},
+    {name: "Pamonha", hint: "Comida"},
+    {name: "Macaco", hint: "Animal"},
+    {name: "Imbu", hint: "Fruta"},
+    {name: "Cuscuz", hint: "Comida"},
+    {name: "Navalha", hint: "Objeto"},
+    {name: "Kiwi", hint: "Fruta"},
+    {name: "Mosca", hint: "Inseto"},
+    {name: "Feijoada", hint: "Comida"},
+    {name: "Pera", hint: "Fruta"},
+    {name: "Xadrez", hint: "Jogo"},
+    {name: "Besouro", hint: "Inseto"},
+    {name: "Alpaca", hint: "Animal"},
+    {name: "Paçoca", hint: "Comida"},
+    {name: "Pudim", hint: "Comida"},
+    {name: "", hint: "Inseto"}
 ]
 
 // Variáveis globais
 let hitCounter = 0
+const numberLettersWordInput = 8
+const numberLettersHintInput = 10
 
 // Variáveis HMTL
 const menuSection = document.querySelector("#menu")
@@ -26,6 +67,10 @@ const addWordButton = document.querySelector("#addWordButton")
 // inputs
 const wordInput = document.querySelector("#wordInput")
 const hintInput = document.querySelector("#hintInput")
+
+// Adicionar valores dinámicos ao html
+document.querySelector("#wordSpan").innerText = "0"+numberLettersWordInput
+document.querySelector("#hintSpan").innerHTML = numberLettersHintInput
 
 // Sorteio das palavras
 var wordDrawn = (function() {
@@ -197,9 +242,9 @@ const removeClassInputsClean = (element) => {
 
 // Adicionar palavra
 const addWord = () => {
-    verifyError(wordInput, 8)
-    verifyError(hintInput, 9)
-    if(verifyError(wordInput, 8) || verifyError(hintInput, 9)){
+    verifyError(wordInput, numberLettersWordInput)
+    verifyError(hintInput, numberLettersHintInput)
+    if(verifyError(wordInput, numberLettersWordInput) || verifyError(hintInput, numberLettersHintInput)){
         showAlert(true, "Erro ao adicionar palavra!")
     }else{
         showAlert(false, "Palavra adicionada com sucesso!")
@@ -354,8 +399,8 @@ const showHideKeyboard = (op = false) => {
 
 // Eventos
 document.querySelector('#hint div').addEventListener("click", _ => toggleHint())
-wordInput.addEventListener("input", _ => verifyError(wordInput, 8))
-hintInput.addEventListener("input", _ => verifyError(hintInput, 9))
+wordInput.addEventListener("input", _ => verifyError(wordInput, numberLettersWordInput))
+hintInput.addEventListener("input", _ => verifyError(hintInput, numberLettersHintInput))
 document.addEventListener("DOMContentLoaded", _ => showHideSection("menu"))
 
 cleanButton.addEventListener('click', cleanAddWord)
