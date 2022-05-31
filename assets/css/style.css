@@ -413,6 +413,10 @@ body {
 }
 
 /* Dica */
+#game.fist #hint {
+    animation: focusHint 2s ease-in-out;
+}
+
 #hint {
     height: 85px;
     min-width: 20px;
@@ -597,6 +601,16 @@ body {
     
     100%{
 		opacity: 100%;
+	}
+}
+
+@keyframes focusHint {
+    0%, 100%{
+		transform: scale(1);
+	}
+    
+    50%{
+		transform: scale(1.3);
 	}
 }
 

@@ -82,6 +82,7 @@ var wordDrawn = (function() {
 const newGame = () => {
     hitCounter = 0
     removeDoll()
+    if(document.querySelector('#game.fist')){focusHint()}
     wordDrawn = words[Math.floor(Math.random() * words.length)]
     removeWordView()
     createWordView(wordDrawn.name)
@@ -96,7 +97,6 @@ const newGame = () => {
 // Reiniciar jogo
 const restart = () => {
     hitCounter = 0
-    removeDoll()
     removeWordView()
     createWordView(wordDrawn.name)
     removeKeyboardHitsAndMisses()
@@ -206,6 +206,12 @@ const timeToClose = (element, time) => {
             newGame()
         }
     }
+}
+
+// Focar na dica
+const focusHint = () => {
+    document.querySelector('#hint div').scrollIntoView()
+    setTimeout(_=>{document.querySelector('#game').classList.remove('fist')}, 2000)
 }
 
 // Fechar mensagem de erro ou de acerto
