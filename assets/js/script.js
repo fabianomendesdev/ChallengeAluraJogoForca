@@ -48,6 +48,7 @@ const words = [
 let hitCounter = 0
 const numberLettersWordInput = 8
 const numberLettersHintInput = 10
+const constTimeToClose = 5
 
 // Variáveis HMTL
 const menuSection = document.querySelector("#menu")
@@ -167,6 +168,12 @@ const showLostWinMsg = (errorWin, msg, word) => {
     const p2Element = document.createElement('p')
     p2Element.classList.add('info')
 
+    const spanElement = document.createElement('span')
+
+    const divSpan = document.createElement('div')
+    divSpan.id = "divSpan"
+    divSpan.appendChild(spanElement)
+
     if(errorWin){
         p2Element.innerText = "Parabéns!"
         pElement.classList.add('hit')
@@ -177,10 +184,28 @@ const showLostWinMsg = (errorWin, msg, word) => {
 
     element.appendChild(pElement)
     element.appendChild(p2Element)
+    element.appendChild(divSpan)
     element.appendChild(divElement)
     
     container.appendChild(element2)
     element2.appendChild(element)
+    timeToClose(element2, constTimeToClose)
+}
+
+// tempo para sair
+const timeToClose = (element, time) => {
+    sub()
+    function sub(){
+        if(time > 0){
+            if(document.querySelector("#divSpan span")){
+                document.querySelector("#divSpan span").innerText = time
+                time--
+                setTimeout(sub, 1000)
+            }
+        }else{
+            newGame()
+        }
+    }
 }
 
 // Fechar mensagem de erro ou de acerto
@@ -397,11 +422,22 @@ const showHideKeyboard = (op = false) => {
     }
 }
 
+// Adicionar barra de rolagem
+const addScrollBar = (value) => {
+    document.querySelector("#scrollBar").style.width = value+'%'
+}
+
 // Eventos
 document.querySelector('#hint div').addEventListener("click", _ => toggleHint())
 wordInput.addEventListener("input", _ => verifyError(wordInput, numberLettersWordInput))
 hintInput.addEventListener("input", _ => verifyError(hintInput, numberLettersHintInput))
 document.addEventListener("DOMContentLoaded", _ => showHideSection("menu"))
+
+// Barra de rolagem
+window.addEventListener('scroll', () => {
+    let value = parseInt(100 * document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight))
+    addScrollBar(value)
+})
 
 cleanButton.addEventListener('click', cleanAddWord)
 addWordButton.addEventListener('click', addWord)

@@ -47,6 +47,15 @@ body {
     ;
 }
 
+/* Barra de rolagem */
+#scrollBar {
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    height: 3px;
+    background-color: var(--color3);
+}
+
 #header {
     grid-area: header;
     /* background-color: blue; */
@@ -505,6 +514,27 @@ body {
 #divShowLostWinMsg .info {
     font-size: 25px;
     color: var(--color5);
+}
+
+#divShowLostWinMsg #divSpan {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--color1);
+}
+
+#divShowLostWinMsg span {
+    color: var(--color7);
+    padding: 5px;
+    font-size: 20px;
+    margin: 0;
 }
 
 #divShowLostWinMsg div {
