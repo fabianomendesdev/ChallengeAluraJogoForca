@@ -364,7 +364,7 @@ const verify = (button, i) => {
 
 // Verificar acertos
 const checkHitsMisses = (key) => {
-    let word = wordDrawn.name.toLocaleLowerCase()
+    let word = wordDrawn.name.normalize("NFD").replace(/[^a-zA-Zs]/g, "").toLocaleLowerCase()
     let result
 
     if(word.indexOf(key) != -1){
@@ -384,8 +384,8 @@ const checkHitsMisses = (key) => {
 const showCorrectLetter = (key) => {
     let sum = 0
     for(let i=0; i < wordDrawn.name.length; i++) {
-        if(key == wordDrawn.name.toLocaleLowerCase().charAt(i)){
-            document.querySelectorAll('#word input')[i].value = key.toLocaleUpperCase()
+        if(key == wordDrawn.name.toLocaleLowerCase().normalize("NFD").replace(/[^a-zA-Zs]/g, "").charAt(i)){
+            document.querySelectorAll('#word input')[i].value = wordDrawn.name.toLocaleUpperCase().charAt(i)
             sum++
         }
     }
